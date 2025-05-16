@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 20:27:02 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/16 14:48:59 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/05/16 14:57:21 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ int Account::getNbAccounts() {
 
 int Account::getTotalAmount() {
     return _totalAmount;
-}
-
-int Account::getNbDeposits() {
-    return _totalNbDeposits;
 }
 
 int Account::getNbDeposits() {
@@ -95,7 +91,7 @@ bool Account::makeWithdrawal(int withdrawal) {
     else {
         std::cout << "index:" << _accountIndex << ";"
                   << "p_amount:" << _totalAmount << ";"
-                  << "withdrawal: refused" << ";";
+                  << "withdrawal:refused" << std::endl;
         return (false);
     }
 }
@@ -105,15 +101,28 @@ int Account::checkAmount() const {
 }
 
 void Account::displayStatus() const {
+    _displayTimestamp();
     std::cout << "index:" << _accountIndex << ";"
               << "p_amount:" << _totalAmount << ";"
               << "deposits:" << _nbDeposits << ";"
-              << "withdrawals:" << _nbWithdrawals;
+              << "withdrawals:" << _nbWithdrawals << std::endl;
+}
+
+Account::Account(int initial_deposit){
+    _accountIndex = _nbAccounts++;
+    _amount = initial_deposit;
+    _nbDeposits = 0;
+    _nbWithdrawals = 0;
+    _totalAmount += _amount;
+    _displayTimestamp();
+    std::cout << "index:" <<  _accountIndex << ";"
+              << "amount:" << initial_deposit << ";"
+              << "created" << std::endl;
 }
 
 Account::~Account() {
     _displayTimestamp();
     std::cout << "index:" << _accountIndex << ";"
               << "amount:" << _amount << ";"
-              << "closed";
+              << "closed" << std::endl;
 }
