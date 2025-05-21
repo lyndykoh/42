@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "pipex.h": "c",
+        "stdio.h": "c",
+        "push_swap.h": "c",
+        "philo.h": "c"
+    }
+}
