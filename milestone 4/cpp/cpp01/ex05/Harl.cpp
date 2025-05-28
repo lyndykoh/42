@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:18:30 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/28 14:12:30 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/05/28 14:47:50 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,19 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {
-    void (Harl::*funcptr) () = 
+    void (Harl::*funcptr[]) (void) = {
+        &Harl::debug,
+        &Harl::info,
+        &Harl::warning,
+        &Harl::error
+    };
+
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    for (int i = 0; i < 4; i++) {
+        if (levels[i] == level) {
+            (this->*funcptr[i])();
+            return;
+        }
+    }
+    std::cout << "[UNKNOWN LEVEL] - I have no idea what you're talking about." << std::endl;
 }

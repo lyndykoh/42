@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:18:35 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/27 16:29:34 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/05/28 14:46:09 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 class Harl {
     private:
-        void debug( void );
-        void info( void );
-        void warning( void );
-        void error( void );
+        void debug(void);
+        void info(void);
+        void warning(void);
+        void error(void);
     public:
-        void complain( std::string level );
+        void complain(std::string level);
 };
 
 #endif
