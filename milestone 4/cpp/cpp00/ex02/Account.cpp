@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 20:27:02 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/16 18:20:22 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/05/28 14:27:22 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ Account::Account(int initial_deposit){
 }
 
 Account::~Account() {
+    // _nbAccounts--;
+    // _totalAmount -= _amount;
     _displayTimestamp();
     std::cout << "index:" << _accountIndex << ";"
               << "amount:" << _amount << ";"
