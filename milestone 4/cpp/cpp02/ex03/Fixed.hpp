@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 17:09:02 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/30 14:51:01 by lkoh             ###   ########.fr       */
+/*   Created: 2025/05/30 14:48:39 by lkoh              #+#    #+#             */
+/*   Updated: 2025/05/30 14:49:34 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <string>
 #include <cmath>
 
 class Fixed {
@@ -35,5 +36,6 @@ class Fixed {
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+
 
 #endif
