@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 23:41:06 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/03 00:18:08 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/06/03 00:20:03 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 
     if (s1 == 0 || s2 == 0 || s3 == 0)
         return false;
-    return (Area == (s1 + s2 + s3));
+    if (Area == (s1 + s2 + s3))
+        return true;
+    return false;
 }
