@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:47:59 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/03 00:08:55 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/06/04 14:23:18 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main() {
     Point inside(2, 2);
     Point edge(2.5, 0);
     Point vertex(0, 0);
-    Point outside(5, 5);
+    Point outside(15, 15);
 
     std::cout << std::boolalpha;
     std::cout << "Point inside: " << bsp(a, b, c, inside) << std::endl;
