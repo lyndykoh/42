@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/04 14:51:22 by lkoh              #+#    #+#              #
-#    Updated: 2025/06/11 12:46:00 by lkoh             ###   ########.fr        #
+#    Created: 2025/06/11 12:45:50 by lkoh              #+#    #+#              #
+#    Updated: 2025/06/12 23:06:48 by lkoh             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = diamondtrap
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+NAME = a.out
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
