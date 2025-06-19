@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:31:42 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/17 22:34:22 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/06/18 14:28:29 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void free_map(t_map *map) {
 
 int main(int argc, char **argv) {
 	if (argc != 2) {
-		printf("Usage: %s <mapfile.cub>\n", argv[0]);
+		printf("Usage: ./cub3d <mapfile.cub>\n");
 		return (1);
 	}
 
