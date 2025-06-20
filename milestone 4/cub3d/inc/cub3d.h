@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 21:41:48 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/18 18:07:27 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/06/21 01:10:53 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct s_map 
 {
     char **map;
+    char **mapfill;
     char *no_text;
     char *so_text;
     char *ea_text;
@@ -41,9 +42,20 @@ typedef struct s_gfx
     
 } t_gfx;
 
+//init.c
 void split_rgb(char *line, int *rgb);
 void read_file(t_map *map, char *filename);
 void check_texture(t_map *map, char *line);
 int ft_isstrnum(char *line);
+
+//checkmap.c
+void floodfill(t_map *map, int x, int y);
+int ismap(char *line);
+void storemap(t_map *map, char *line);
+int is_map_line(char *line);
+
+//utils.c
+int ft_isspace(int c);
+
 
 #endif

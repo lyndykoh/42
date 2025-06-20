@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:31:42 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/18 14:28:29 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/06/21 01:15:01 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int main(int argc, char **argv) {
 		return (1);
 	}
 
-	t_map map = {0}; // zero-initialize everything
+	t_map map = {0};
 
 	read_file(&map, argv[1]);
 
-	// Print results
+	// Print parsed data
 	printf("Parsed Textures:\n");
 	printf("NO: %s", map.no_text);
 	printf("SO: %s", map.so_text);
@@ -42,7 +42,11 @@ int main(int argc, char **argv) {
 	printf("Parsed Ceiling RGB: %d,%d,%d\n",
 		map.ceiling_rgb[0], map.ceiling_rgb[1], map.ceiling_rgb[2]);
 
-	// Clean up
-	free_map(&map);
+	// ✅ Print the map
+	printf("\nParsed Map:\n");
+	for (int i = 0; map.map && map.map[i]; i++)
+		printf("%s", map.map[i]);  // newline already included from get_next_line
+
+
 	return 0;
 }

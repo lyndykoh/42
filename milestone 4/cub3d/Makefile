@@ -8,6 +8,8 @@ LIBFT_DIR = ./libft
 
 SOURCES = $(SRC_DIR)/cub3d.c \
           $(SRC_DIR)/init.c \
+          $(SRC_DIR)/checkmap.c \
+          $(SRC_DIR)/utils.c \
           ./gnl/get_next_line.c \
 
 OBJECTS = $(SOURCES:.c=.o)

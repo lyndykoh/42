@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 21:47:44 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/19 11:18:12 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/06/21 01:26:29 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void split_rgb(char *line, int *rgb)
         if ((i < 3) && (ft_isstrnum(part[i])))
         {
             rgb[i] = ft_atoi(part[i]);
+            if (rgb[i] < 0 || rgb[i] > 255)
+            {
+                perror("rbg got what numbers ah i ask u\n");
+                exit(0);
+            }
         }
         if (!ft_isstrnum(part[i]))
             break;
@@ -58,7 +63,9 @@ void read_file(t_map *map, char *filename)
 {
     int fd;
     char *line;
+    int texture;
 
+    texture = 0;
     fd = open(filename, O_RDONLY);
     if (fd < 0)
     {
@@ -67,16 +74,17 @@ void read_file(t_map *map, char *filename)
     }
     while ((line = get_next_line(fd)))
     {
-        check_texture(map, line);
+        if (!texture)
+        {
+            check_texture(map, line);
+            if (!(map->no_text == NULL || map->so_text == NULL || map->ea_text == NULL || map->we_text == NULL || map->f == 0 || map->c == 0))
+                texture = 1;
+        }
+        storemap(map, line);
     }
-    if (map->no_text == NULL || map->so_text == NULL || map->ea_text == NULL || map->we_text == NULL)
+    if (map->no_text == NULL || map->so_text == NULL || map->ea_text == NULL || map->we_text == NULL || map->f == 0 || map->c == 0)
     {
         perror("ur map not correct sister.. missing smth\n");
-        exit(0);
-    }
-    if (map->f == 0 || map->c == 0)
-    {
-        perror("sdjfladsj\n");
         exit(0);
     }
 } 
