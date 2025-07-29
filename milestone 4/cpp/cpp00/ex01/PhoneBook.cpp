@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:09:58 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/08 20:20:44 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/07/28 16:07:07 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,39 @@ void PhoneBook::AddContact(){
 
 void PhoneBook::SearchContact() const {
     std::string input;
+    
     if (count == 0) {
-        std::cout << "U NVR EVEN ADD ANY CONTACTS WHAT U SEARCHING FOR???\n";
+        std::cout << "U nvr even add any contacts who u searching for???\n";
         return;
     }
     
     for (int i = 0; i < count; i++) {
         contacts[i].DisplaySummary(i + 1);
     }
+    
+    while (true) {
+        std::cout << "who uw to see? give a number ";
+        if (!getline(std::cin, input))
+            exit(1);
+        
+        bool isValid = !input.empty();
+        for (size_t i = 0; i < input.length(); i++) {
+            if (!std::isdigit(input[i])) {
+                isValid = false;
+                break;
+            }
+        }
+        if (!isValid) {
+            std::cout << "bruh that's not even a number try again \n";
+            continue;
+        }
+        int index = std::atoi(input.c_str());
 
-    std::cout << "who uw to see? ";
-    if (!getline(std::cin, input))
-        exit(1);
-    int index = stoi(input);
-    if (index >= 1 && index <= count)
-        contacts[index - 1].DisplayFull();
-    else 
-        std::cout << "brother u cant read? theres only that few number.. " << std::endl;
+        if (index >= 1 && index <= count) {
+            contacts[index - 1].DisplayFull();
+            break;
+        } else {
+            std::cout << "brother u cant read? theres only " << count << " numbers..\n";
+        }
+    }
 }
