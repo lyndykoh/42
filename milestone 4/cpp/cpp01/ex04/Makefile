@@ -6,7 +6,7 @@
 #    By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/18 22:39:41 by lkoh              #+#    #+#              #
-#    Updated: 2025/05/19 14:49:05 by lkoh             ###   ########.fr        #
+#    Updated: 2025/08/04 21:45:05 by lkoh             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) *.replace
 
 fclean: clean
 	rm -f $(NAME)

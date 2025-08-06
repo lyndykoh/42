@@ -6,20 +6,19 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:18:37 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/28 14:48:01 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/06 11:50:31 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main () {
+int main (int argc, char *argv[]) {
+    if (argc != 2) {
+        std::cerr << "KNN like that lah: ./harlFilter <level>" << std::endl;
+        return (1);
+    }
+    
     Harl harl;
-
-    harl.complain("DEBUG");
-    harl.complain("INFO");
-    harl.complain("WARNING");
-    harl.complain("ERROR");
-    harl.complain("GAY");
-
+    harl.complain(argv[1]);
     return (0);
 }

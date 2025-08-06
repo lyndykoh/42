@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 23:51:56 by lkoh              #+#    #+#             */
-/*   Updated: 2025/05/19 14:29:08 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/04 17:56:46 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 HumanB::HumanB(std::string name) {
     _name = name;
+    _weapon = NULL;
 }
 
 void HumanB::attack() const {
-    std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
+    if (_weapon)
+        std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
+    else 
+        std::cout << _name << " attacks with his bare hands" << std::endl;
 }
 
 void HumanB::setWeapon(Weapon &weapon) {
