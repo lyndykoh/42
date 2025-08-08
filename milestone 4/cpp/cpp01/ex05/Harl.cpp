@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:18:30 by lkoh              #+#    #+#             */
-/*   Updated: 2025/08/06 11:51:01 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/06 11:55:12 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,3 @@ void Harl::complain(std::string level) {
     }
     std::cout << "[UNKNOWN LEVEL] - I have no idea what you're talking about." << std::endl;
 }
-
-/* 
-void Harl::complain(std::string level) {
-    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    int i = 0;
-    while (i < 4 && levels[i] != level)
-        i++;
-    switch (i) {
-        case 0:
-            debug();
-        case 1:
-            info();
-        case 2:
-            warning();
-        case 3:
-            error();
-            break;
-        default:
-            std::cout << "[UNKNOWN LEVEL] - I have no idea what you're talking about." << std::endl;
-    }
-} */

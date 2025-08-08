@@ -6,15 +6,15 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:25:35 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/04 17:26:39 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/08 14:31:08 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 int main() {
-    ClapTrap clap1("CL4P-TP");
-    ClapTrap clap2("Unit-01");
+    ClapTrap clap1("Clap1");
+    ClapTrap clap2("Clap2");
 
     // Display initial states by calling methods that print messages.
     clap1.attack("Skag");

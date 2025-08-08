@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 15:03:48 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/04 18:04:03 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/08 14:38:26 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void ClapTrap::attack(const std::string& target) {
     }
     --_energyPoints;
     std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
+    // std::cout << "ClapTrap " << _name << " energy at " << _energyPoints << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -63,6 +64,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
         return;
     }
         std::cout << "ClapTrap " << _name << " health at " << _hitPoints << std::endl;
+        // std::cout << "ClapTrap " << _name << " energy at " << _energyPoints << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
@@ -74,4 +76,5 @@ void ClapTrap::beRepaired(unsigned int amount) {
     _hitPoints += amount;
     std::cout << "ClapTrap " << _name << " has been repaired " << amount << " points" << std::endl;
     std::cout << "ClapTrap " << _name << " health at " << _hitPoints << std::endl;
+    // std::cout << "ClapTrap " << _name << " energy at " << _energyPoints << std::endl;
 }
