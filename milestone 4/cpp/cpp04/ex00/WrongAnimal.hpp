@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 22:24:09 by lkoh              #+#    #+#             */
-/*   Updated: 2025/06/12 23:12:00 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/14 16:18:35 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class WrongAnimal {
         WrongAnimal &operator=(const WrongAnimal &other);
         virtual ~WrongAnimal();
 
-        virtual void makeSound() const;
+        void makeSound() const;
         std::string getType() const;
 };
 
