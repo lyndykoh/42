@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:43:16 by lkoh              #+#    #+#             */
-/*   Updated: 2024/12/02 14:59:08 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/08/24 17:26:19 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 
 # define PINKT "\001\033[38;2;255;157;193m\002"
-# define BLUET "\033[94m"
+# define PINKT "\033[94m"
 # define RESET "\001\033[0m\002"
 
 typedef struct s_data	t_data;
