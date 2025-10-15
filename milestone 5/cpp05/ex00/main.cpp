@@ -1,82 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/15 16:04:41 by lkoh              #+#    #+#             */
+/*   Updated: 2025/10/15 16:04:42 by lkoh             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
-int main() {
-    std::cout << PINK "==== Testing valid construction ====" RESET << std::endl;
-    try {
-        Bureaucrat a("Alice", 1);   // highest grade
-        Bureaucrat b("Bob", 150);   // lowest grade
-        Bureaucrat c("Charlie", 42); // normal grade
+int main(void)
+{
+	std::cout << "\033[33m" << std::endl << "Test ex01" << "\033[0m" << std::endl;
 
-        std::cout << a << std::endl;
-        std::cout << b << std::endl;
-        std::cout << c << std::endl;
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
+	std::cout << "\033[33m" << std::endl << "Test too high and too low creation" << "\033[0m" << std::endl;
+	try
+	{
+		Bureaucrat Sleeper1("Bernd", 1500);
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 
-    std::cout << PINK "\n==== Testing invalid construction ====" RESET << std::endl;
-    try {
-        Bureaucrat d("Dave", 0); // too high
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
+	try
+	{
+		Bureaucrat Sleeper2("Olaf", -10);
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 
-    try {
-        Bureaucrat e("Eve", 151); // too low
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
+	std::cout << "\033[33m" << std::endl << "Test increasing" << "\033[0m" << std::endl;
+	Bureaucrat bob("Bob", 2);
+	std::cout << bob;
+	try
+	{
+		bob.increment();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	std::cout << bob;
+	
+	try
+	{
+	bob.increment();
+	}
+	catch(const std::exception& e)
+	{
+	std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	std::cout << bob;
 
-    std::cout << PINK "\n==== Testing increment/decrement edge cases ====" RESET<< std::endl;
-    try {
-        Bureaucrat top("TopDog", 1);
-        std::cout << top << std::endl;
-        top.increment(); // should throw
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
 
-    try {
-        Bureaucrat low("LowMan", 150);
-        std::cout << "\n" << low << std::endl;
-        low.decrement(); // should throw
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
 
-    std::cout << PINK "\n==== Testing normal grade changes ====" RESET << std::endl;
-    try {
-        Bureaucrat mid("Middle", 75);
-        std::cout << mid << std::endl;
-        mid.increment();
-        std::cout << "After increment: " << mid << std::endl;
-        mid.decrement();
-        std::cout << "After decrement: " << mid << std::endl;
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-
-    std::cout << PINK "\n==== Testing copy and assignment ====" RESET << std::endl;
-    try {
-        Bureaucrat original("Original", 100);
-        Bureaucrat copy(original); // copy constructor
-        Bureaucrat assigned("Temp", 50);
-        assigned = original;       // copy assignment
-
-        std::cout << "Original: " << original << std::endl;
-        std::cout << "Copy: " << copy << std::endl;
-        std::cout << "Assigned: " << assigned << std::endl;
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-
-    std::cout << PINK "\n==== The End ====" RESET << std::endl;
-    return 0;
+	std::cout << "\033[33m" << std::endl << "Test decreasing" << "\033[0m" << std::endl;
+	Bureaucrat tim("Tim", 149);
+	std::cout << tim;
+	try
+	{
+		tim.decrement();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	std::cout << tim;
+	
+	try
+	{
+	tim.decrement();
+	}
+	catch(const std::exception& e)
+	{
+	std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	std::cout << tim;
+	
+	return (0);
 }
