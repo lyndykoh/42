@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:19:26 by lkoh              #+#    #+#             */
-/*   Updated: 2025/09/25 16:25:28 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/11/07 19:19:53 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,17 @@ Span::~Span() {}
 
 void Span::addNumber(int a) 
 {
-    if (_v.size() > _N)
+    if (_v.size() >= _N)
         throw OOBException();
     _v.push_back(a);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    size_t distance = std::distance(begin, end);
+    if (_v.size() + distance >= _N)
+        throw OOBException();
+    _v.insert(_v.end(), begin, end);
 }
 
 int Span::shortestSpan()

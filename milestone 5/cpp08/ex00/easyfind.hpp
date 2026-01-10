@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 15:31:26 by lkoh              #+#    #+#             */
-/*   Updated: 2025/09/25 15:03:25 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/11/06 16:47:44 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ typename T::iterator easyfind(T &a, int b)
         throw OOBException();
     return (iter);
 }
-
 #endif

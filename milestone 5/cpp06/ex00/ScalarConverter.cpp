@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 20:52:15 by lkoh              #+#    #+#             */
-/*   Updated: 2025/09/15 13:21:22 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/10/16 10:15:54 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void ScalarConverter::convert(const std::string &string) {
     }
     else if (isInt(string))
     {
-        long l = std::strtol(string.c_str(), NULL, 10);
+        long l = atol(string.c_str());
         if (l > INT_MAX || l < INT_MIN || errno == ERANGE)
         {
             std::cerr << "Error: invalid / out of range" << std::endl;
@@ -131,7 +131,7 @@ void ScalarConverter::convert(const std::string &string) {
         errno = 0;
         char* end;
         std::string core = string.substr(0, string.length() - 1);
-        f = std::strtof(core.c_str(), &end);
+        f = atof(core.c_str());
         if (errno == ERANGE || *end != '\0')
         {
             std::cerr << "Error: invalid / out of range" << std::endl;
@@ -146,7 +146,7 @@ void ScalarConverter::convert(const std::string &string) {
     {
         errno = 0;
         char* end;
-        d = std::strtod(string.c_str(), &end);
+        d = std::atod(string.c_str(), &end);
         if (errno == ERANGE || *end != '\0')
         {
             std::cerr << "Error: invalid / out of range" << std::endl;
@@ -161,14 +161,14 @@ void ScalarConverter::convert(const std::string &string) {
     {
         c = 0;
         i = 0;
-        f = std::strtof(string.c_str(), NULL);
+        f = atof(string.c_str());
         d = static_cast<double>(f);
     }
     else if (isSpecialDouble(string))
     {
         c = 0;
         i = 0;
-        d = std::strtod(string.c_str(), NULL);
+        d = atod(string.c_str());
         f = static_cast<float>(d);
     }
     else 

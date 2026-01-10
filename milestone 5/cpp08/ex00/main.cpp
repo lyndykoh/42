@@ -6,7 +6,7 @@
 /*   By: lkoh <lkoh@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 14:57:09 by lkoh              #+#    #+#             */
-/*   Updated: 2025/09/25 15:03:31 by lkoh             ###   ########.fr       */
+/*   Updated: 2025/11/06 16:48:09 by lkoh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,19 @@ int main() {
             vec.push_back(i);
 
         std::cout << "Vector test: " << std::endl;
-        std::cout << "Found: " << *easyfind(vec, 5) << std::endl;
-        std::cout << "Found: " << *easyfind(vec, 9) << std::endl;
+        // std::cout << "Found: " << *easyfind(vec, 5) << std::endl;
+        // std::cout << "Found: " << *easyfind(vec, 9) << std::endl;
 
+        try {
+            std::cout << "Found: " << *easyfind(vec, 5) << std::endl;
+        } catch (std::exception &e){
+            std::cout << "Exception: " << e.what() << std::endl;
+        }
+        try {
+            std::cout << "Found: " << *easyfind(vec, 9) << std::endl;
+        } catch (std::exception &e){
+            std::cout << "Exception: " << e.what() << std::endl;
+        }
         try {
             easyfind(vec, 42);  // Not in vector
         } catch (std::exception &e) {
