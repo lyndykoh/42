@@ -1,0 +1,99 @@
+# services:
+#   mariadb: 
+#     container_name: mariadb
+#     build: ./requirements/mariadb
+#     restart: always 
+#     networks:
+#       - inception
+#     env_file:
+#       - .env
+
+#   nginx:
+#     container_name: nginx
+#     build: ./requirements/nginx
+#     restart: always
+#     ports: 
+#       - "443:443"
+#     networks:
+#       - inception
+#     env_file:
+#       - .env
+
+#   wordpress:
+#     container_name: wordpress
+#     build: ./requirements/wordpress
+#     restart: always
+#     networks:
+#       - inception
+#     env_file:
+#       - .env
+
+# networks: 
+#   inception: 
+#     driver: default
+
+
+services:
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - inception
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  wordpress:
+    container_name: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - mariadb
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "443:443"
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - wordpress
+
+networks:
+  inception:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/lkoh/data/mariadb
+      
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/lkoh/data/wordpress
