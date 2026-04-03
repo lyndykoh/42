@@ -1,38 +1,3 @@
-# services:
-#   mariadb: 
-#     container_name: mariadb
-#     build: ./requirements/mariadb
-#     restart: always 
-#     networks:
-#       - inception
-#     env_file:
-#       - .env
-
-#   nginx:
-#     container_name: nginx
-#     build: ./requirements/nginx
-#     restart: always
-#     ports: 
-#       - "443:443"
-#     networks:
-#       - inception
-#     env_file:
-#       - .env
-
-#   wordpress:
-#     container_name: wordpress
-#     build: ./requirements/wordpress
-#     restart: always
-#     networks:
-#       - inception
-#     env_file:
-#       - .env
-
-# networks: 
-#   inception: 
-#     driver: default
-
-
 services:
   mariadb:
     container_name: mariadb
@@ -97,3 +62,14 @@ volumes:
       type: none
       o: bind
       device: /home/lkoh/data/wordpress
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
+  wp_admin_password:
+    file: ./secrets/wp_admin_password.txt
+  wp_user_password:
+    file: ./secrets/wp_user_password.txt
+  
