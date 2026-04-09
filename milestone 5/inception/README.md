@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by <your_login>.*
+*This project has been created as part of the 42 curriculum by lkoh.*
 
 ## Description
 **Inception** is a System Administration project designed to broaden knowledge of system virtualization. The project involves building a complete web infrastructure using **Docker Compose**. It provisions a secure NGINX web server (via TLS), a WordPress application, and a MariaDB database, each running in separate, isolated containers.
