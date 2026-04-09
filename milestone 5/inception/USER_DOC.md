@@ -1,61 +1,49 @@
-# User Documentation (Evaluation Guide)
+# DEV_DOC.md - Developer Documentation
 
-Follow these instructions to deploy and evaluate the Inception infrastructure.
+This document details the technical setup, architecture, and maintenance procedures for developers working on the Inception project.
 
-## 1. Prerequisites
+## 1. Environment Setup from Scratch
 
-Before building the project, you must map the local domain to the loopback address.
-Edit the host machine's `/etc/hosts` file:
+### Prerequisites
+* **Operating System**: Debian Buster/Bullseye or a similar Linux distribution.
+* **Tools**: `docker`, `docker-compose`, `make`, `openssl`, and `git`.
+* **Hardware**: Virtual Machine with at least 2GB RAM and 5GB disk space.
 
-```bash
-sudo nano /etc/hosts
-```
+### Configuration Files
+The project logic is centralized in the `srcs/` directory:
+* `docker-compose.yml`: Defines the service orchestration, networks, and volumes.
+* `.env`: (Required) Must contain keys like `MYSQL_ROOT_PASSWORD`, `MYSQL_USER`, `MYSQL_PASSWORD`, `WP_ADMIN_USER`, and `WP_ADMIN_PASSWORD`.
+* `conf/`: Contains the configuration templates for NGINX, PHP-FPM, and MariaDB.
 
-Add the following line:
+### Secrets Management
+Passwords and sensitive data are handled via a local `secrets/` directory. Developers should:
+1. Create a `secrets/` directory at the root.
+2. Generate text files for `db_password.txt`, `db_root_password.txt`, and `wp_admin_password.txt`.
+3. These files are mapped into the containers as read-only volumes to ensure sensitive data is not stored in the image layers.
 
-```text
-127.0.0.1    lkoh.42.fr
-```
+## 2. Building and Launching
+The project uses a standard **Makefile** to automate the build process and environment preparation.
 
-## 2. Deployment
+* **Build**: `make` or `make all` 
+  * Triggers the creation of local volume directories on the host.
+  * Builds images using Dockerfiles located in `srcs/requirements/`.
+  * Starts services via `docker-compose up -d`.
 
-Navigate to the root of the repository and run the Makefile:
+## 3. Management Commands
+Developers can use the following commands to manage the lifecycle of the stack:
 
-```bash
-make
-```
+* **Stop Services**: `docker compose -f srcs/docker-compose.yml stop`
+* **Restart Services**: `make re` (Performs a full down/up cycle).
+* **View Logs**: `docker compose -f srcs/docker-compose.yml logs -f`
+* **Interactive Shell**: `docker exec -it <container_name> /bin/bash`
+* **Volume Inspection**: `docker volume ls`
 
-This command will:
-1. Create the persistent data directories at `/home/lkoh/data/wordpress` and `/home/lkoh/data/mariadb`.
-2. Build the custom NGINX, WordPress, and MariaDB images.
-3. Launch the containers in the background via Docker Compose.
+## 4. Data Storage and Persistence
+Persistence is achieved through **Docker Volumes** mapped to the host file system to ensure data survives container restarts or removals.
 
-## 3. Accessing the Services
+* **Database Persistence**: MariaDB data is stored in the `mariadb` volume. 
+  * Host Path: `/home/lkoh/data/mariadb`
+* **Application Persistence**: WordPress files (themes, plugins, uploads) are stored in the `wordpress` volume.
+  * Host Path: `/home/lkoh/data/wordpress`
 
-**The Website:**
-* Navigate to `https://lkoh.42.fr`
-* The browser will present a self-signed certificate warning. Bypass it to view the WordPress site securely over TLSv1.3.
-
-**WordPress Admin Dashboard:**
-* Navigate to `https://lkoh.42.fr/wp-admin`
-* Use the credentials provided during the evaluation (stored locally in the `secrets/` directory) to verify the existence of the Administrator account and the standard user account.
-
-## 4. Teardown & Cleanup
-
-To safely stop the containers without losing data:
-
-```bash
-make down
-```
-
-To stop containers and prune images/networks:
-
-```bash
-make clean
-```
-
-To perform a factory reset (Warning: This deletes the local database and website files from the host machine):
-
-```bash
-make fclean
-```
+Both volumes are defined as `driver: local` in the `docker-compose.yml` to ensure strict control over the host storage location.
